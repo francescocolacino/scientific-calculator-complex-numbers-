@@ -13,7 +13,6 @@ import java.util.Stack;
 public class CalcStack<T> extends Stack<T>{
     
     
-    
     public T drop(){
         return this.pop();
     }
