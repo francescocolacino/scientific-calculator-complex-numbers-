@@ -9,12 +9,23 @@ package View;
  * @author gabriel
  */
 public class StackView extends javax.swing.JPanel {
-
+        
+    int nNumbers;
     /**
-     * Creates new form StackView
+     * Creates new form VariabileView
      */
     public StackView() {
         initComponents();
+        nNumbers = 0;
+    }
+    
+    public void add(String num){
+        jPanel1.add(new StackNumberView(num));
+        ++nNumbers;
+    }
+    
+    public void delete(){
+        jPanel1.remove(--nNumbers);
     }
 
     /**
@@ -26,117 +37,30 @@ public class StackView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        stack11 = new javax.swing.JLabel();
-        stack10 = new javax.swing.JLabel();
-        stack9 = new javax.swing.JLabel();
-        stack8 = new javax.swing.JLabel();
-        stack7 = new javax.swing.JLabel();
-        stack6 = new javax.swing.JLabel();
-        stack5 = new javax.swing.JLabel();
-        stack3 = new javax.swing.JLabel();
-        stack4 = new javax.swing.JLabel();
-        stack2 = new javax.swing.JLabel();
-        satck1 = new javax.swing.JLabel();
-        stack0 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
 
-        stack11.setText("jLabel1");
-
-        stack10.setText("jLabel1");
-
-        stack9.setText("jLabel1");
-
-        stack8.setText("jLabel1");
-
-        stack7.setText("jLabel1");
-
-        stack6.setText("jLabel1");
-
-        stack5.setText("jLabel1");
-
-        stack3.setText("jLabel1");
-
-        stack4.setText("jLabel1");
-
-        stack2.setText("jLabel1");
-
-        satck1.setText("jLabel1");
-
-        stack0.setText("jLabel1");
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jScrollPane1.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(stack6)
-                    .addComponent(stack7)
-                    .addComponent(stack8)
-                    .addComponent(stack9)
-                    .addComponent(stack10)
-                    .addComponent(stack11))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stack5)
-                    .addComponent(stack4)
-                    .addComponent(stack3)
-                    .addComponent(stack2)
-                    .addComponent(satck1)
-                    .addComponent(stack0))
-                .addGap(22, 22, 22))
+            .addGap(0, 109, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stack5)
-                    .addComponent(stack11))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stack4)
-                    .addComponent(stack10))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stack3)
-                    .addComponent(stack9))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stack2)
-                    .addComponent(stack8))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(satck1)
-                    .addComponent(stack7))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stack0)
-                    .addComponent(stack6))
-                .addGap(37, 37, 37))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel satck1;
-    private javax.swing.JLabel stack0;
-    private javax.swing.JLabel stack10;
-    private javax.swing.JLabel stack11;
-    private javax.swing.JLabel stack2;
-    private javax.swing.JLabel stack3;
-    private javax.swing.JLabel stack4;
-    private javax.swing.JLabel stack5;
-    private javax.swing.JLabel stack6;
-    private javax.swing.JLabel stack7;
-    private javax.swing.JLabel stack8;
-    private javax.swing.JLabel stack9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

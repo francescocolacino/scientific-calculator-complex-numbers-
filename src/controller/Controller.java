@@ -221,8 +221,6 @@ public class Controller {
     
     private NumeroComplesso getVar(int var){
         
-        
-        
     }
     
     private void setVar(int var, NumeroComplesso n){
@@ -291,9 +289,11 @@ public class Controller {
         
     }
     
-    public void errorHandler(Error error){
+    public void errorHandler(Error error){   
         
-        
+    }
+    
+    public void inputHandler(String s){
         
     }
     

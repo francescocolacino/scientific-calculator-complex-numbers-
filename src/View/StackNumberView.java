@@ -8,13 +8,19 @@ package View;
  *
  * @author gabriel
  */
-public class VariableView extends javax.swing.JPanel {
+public class StackNumberView extends javax.swing.JPanel {
 
     /**
      * Creates new form VariableView
      */
-    public VariableView() {
+    public StackNumberView() {
         initComponents();
+        this.setVisible(true);
+    }
+    
+    public StackNumberView(String s) {
+        initComponents();
+        jLabel1.setText(s);
     }
 
     /**
@@ -26,21 +32,26 @@ public class VariableView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 396, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 296, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
