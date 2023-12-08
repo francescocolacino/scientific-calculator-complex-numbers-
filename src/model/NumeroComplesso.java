@@ -10,4 +10,45 @@ package model;
  */
 public class NumeroComplesso {
     
+    private double realPart;
+    private double imaginaryPart;
+    
+    public NumeroComplesso(double real){
+        
+        realPart = real;
+        imaginaryPart = 0;
+        
+    }
+            
+    public NumeroComplesso(double real,double imaginary){
+        
+        realPart = real;
+        imaginaryPart = imaginary;
+        
+    }
+    
+    public NumeroComplesso(NumeroComplesso n){
+        
+        realPart = n.realPart;
+        imaginaryPart = n.imaginaryPart;
+        
+    }
+    
+    public double getRealPart(){
+        
+        return(realPart);
+        
+    }
+    
+    public double getComplexPart(){
+        
+        return(imaginaryPart);
+        
+    }
+    
+    public String toString(){
+        
+        return(String.valueOf(realPart)+String.valueOf(imaginaryPart));
+        
+    }
 }
