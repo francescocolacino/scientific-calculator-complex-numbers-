@@ -4,43 +4,23 @@
  */
 package View;
 
-import java.awt.GridLayout;
-
 /**
  *
  * @author gabriel
  */
-public class StackView extends javax.swing.JPanel {
-        
-    private int nNumbers;
-    private GridLayout gl;
+public class varView extends javax.swing.JPanel {
+
     /**
-     * Creates new form VariabileView
+     * Creates new form varVies
      */
-    public StackView() {
+    public varView() {
         initComponents();
-        nNumbers = 0;
-        
-        gl = new GridLayout(1,1);
-        jPanel1.setLayout(gl);
-    }
-    
-    public void addNum(String num){
-        gl.setRows(++nNumbers);
-        jPanel1.add(new StackNumberView(num));
-    }
-    
-    public void removeNum(){
-        jPanel1.remove(--nNumbers);
-        gl.setRows(nNumbers);
-    }
-    
-    public void clean(){
-        jPanel1.removeAll();
-        nNumbers = 0;
-        gl.setRows(0);
     }
 
+    public void setText(String var){
+        jLabel1.setText(var);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,31 +30,30 @@ public class StackView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
-        jPanel1.setLayout(new java.awt.GridLayout());
-        jScrollPane1.setViewportView(jPanel1);
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 109, Short.MAX_VALUE)
+            .addGap(0, 90, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 37, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

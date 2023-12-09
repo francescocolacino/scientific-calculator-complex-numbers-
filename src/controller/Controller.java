@@ -19,10 +19,11 @@ public class Controller {
     private ArrayList<NumeroComplesso> variables;
     private CalcStack<NumeroComplesso> stack;
     private Calcolatore calcolatore;
-    private MainView mw;
+    public MainView mw;
     
     public Controller(){
         mw = new MainView();
+        mw.setController(this);
         calcolatore = new Calcolatore();
         stack = new CalcStack<>();
         variables = new ArrayList<>();

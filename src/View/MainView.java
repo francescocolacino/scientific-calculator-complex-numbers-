@@ -4,23 +4,32 @@
  */
 package View;
 
+import controller.Controller;
+
 /**
  *
  * @author gabriel
  */
 public class MainView extends javax.swing.JFrame {
     
-    private controller.Controller controller; 
+    private Controller controller; 
     
     /**
      * Creates new form MainView
      */
     public MainView() {
         initComponents();
+        showView();
+        
         inputView1.mw = this;
     }
     
+    public void setController(Controller c){
+        controller = c;
+    }
+    
     public void recibeInput(String s){
+        System.out.print(s);
         controller.inputHandler(s);
     }
     
@@ -32,8 +41,20 @@ public class MainView extends javax.swing.JFrame {
         stackView.removeNum();
     }
     
+    public void cleanStack(){
+        stackView.clean();
+    }
+    
     public void setVar(int i, String num){
-        
+        varView.setVariable(i, num);
+    }
+    
+    public void setVar(char c, String num){
+        varView.setVariable(c, num);
+    }
+    
+    private void showView(){
+        this.setVisible(true);
     }
 
     /**
@@ -46,7 +67,7 @@ public class MainView extends javax.swing.JFrame {
     private void initComponents() {
 
         inputView1 = new View.InputView();
-        varView = new View.VarView();
+        varView = new View.VariablesView();
         stackView = new View.StackView();
         infoView1 = new View.InfoView();
 
@@ -94,6 +115,6 @@ public class MainView extends javax.swing.JFrame {
     private View.InfoView infoView1;
     private View.InputView inputView1;
     private View.StackView stackView;
-    private View.VarView varView;
+    private View.VariablesView varView;
     // End of variables declaration//GEN-END:variables
 }

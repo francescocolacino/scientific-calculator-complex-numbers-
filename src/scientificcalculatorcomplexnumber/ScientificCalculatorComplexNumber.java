@@ -4,6 +4,8 @@
  */
 package scientificcalculatorcomplexnumber;
 
+import controller.Controller;
+
 /**
  *
  * @author gabriel
@@ -15,6 +17,31 @@ public class ScientificCalculatorComplexNumber {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Controller c = new Controller();
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
+        c.mw.addToStack("1+4i");
+        c.mw.addToStack("1+5i");
     }
     
 }

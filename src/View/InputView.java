@@ -31,7 +31,7 @@ public class InputView extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        jTextField1.setText("Put here complex numbers or operators");
+        jTextField1.setToolTipText("Put here complex numbers or operators");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
