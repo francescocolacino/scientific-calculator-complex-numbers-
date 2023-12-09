@@ -241,79 +241,221 @@ public class Controller {
     
     public void substractVar(int var){
         
-        double real = variables.get(var).getRealPart()-stack.lastElement().getRealPart();
-        double im = variables.get(var).getComplexPart()-stack.lastElement().getComplexPart();
-        NumeroComplesso n = new NumeroComplesso(real, im);
-        variables.set(var, n);
+        if(variables.get(var)!=null&&!stack.isEmpty()){
+            
+            double real = variables.get(var).getRealPart()-stack.lastElement().getRealPart();
+            double im = variables.get(var).getComplexPart()-stack.lastElement().getComplexPart();
+            NumeroComplesso n = new NumeroComplesso(real, im);
+            variables.set(var, n);
+            
+        }else if(stack.isEmpty()){
+            mw.NoValueInStackToMessage();
+        }else {
+            mw.NoValueInVarToOperateMessage();
+        }
+        
         
     }
     
     public void addVar(int var){
         
-        double real = stack.lastElement().getRealPart()+variables.get(var).getRealPart();
-        double im = stack.lastElement().getComplexPart()+variables.get(var).getComplexPart();
-        NumeroComplesso n = new NumeroComplesso(real, im);
-        variables.set(var, n);
+        if(variables.get(var)!=null&&!stack.isEmpty()){
+            
+            double real = stack.lastElement().getRealPart()+variables.get(var).getRealPart();
+            double im = stack.lastElement().getComplexPart()+variables.get(var).getComplexPart();
+            NumeroComplesso n = new NumeroComplesso(real, im);
+            variables.set(var, n);
+            
+        }else if(stack.isEmpty()){
+            mw.NoValueInStackToOperateMessage();
+        }else {
+            mw.NoValueInVarToOperateMessage();
+        }
+        
         
     }
     
     public void varToStack(int var){
         
+        NumeroComplesso n = getVar(var);
         
+        if(n!=null){
+            
+            stack.add(n);
+            
+        }else{
+            mw.NoValueInVarToOperateMessage();
+        }
         
     }
     
     public void stackToVar(int var){
         
-        
+        if(!stack.isEmpty()){
+            
+            NumeroComplesso n = stack.drop();
+            setVar(var, n);
+            
+        }else{
+            mw.NoValueInStackToOperateMessage();
+        }
         
     }
     
     public void addStack(){
         
-        
+        if(!stack.isEmpty()){
+            
+            NumeroComplesso n1 = stack.drop();
+            
+            if(!stack.isEmpty()){
+                
+                NumeroComplesso n2 = stack.drop();
+                stack.add(calcolatore.add(n1,n2));
+                
+            }else{
+                
+                stack.add(n1);
+                mw.NoValueInStackToOperateMessage();
+                
+            }
+            
+            
+        }else{
+            mw.NoValueInStackToOperateMessage();
+        }
         
     }
     
     public void substractStack(){
         
-        
+        if(!stack.isEmpty()){
+            
+            NumeroComplesso n1 = stack.drop();
+            
+            if(!stack.isEmpty()){
+                
+                NumeroComplesso n2 = stack.drop();
+                stack.add(calcolatore.substract(n1,n2));
+                
+            }else{
+                
+                stack.add(n1);
+                mw.NoValueInStackToOperateMessage();
+                
+            }
+            
+            
+        }else{
+            mw.NoValueInStackToOperateMessage();
+        }
         
     }
     
     public void multiplyStack(){
         
-        
+        if(!stack.isEmpty()){
+            
+            NumeroComplesso n1 = stack.drop();
+            
+            if(!stack.isEmpty()){
+                
+                NumeroComplesso n2 = stack.drop();
+                stack.add(calcolatore.multiply(n1,n2));
+                
+            }else{
+                
+                stack.add(n1);
+                mw.NoValueInStackToOperateMessage();
+                
+            }
+            
+            
+        }else{
+            mw.NoValueInStackToOperateMessage();
+        }
         
     }
     
     public void divideStack(){
         
-        
+        if(!stack.isEmpty()){
+            
+            NumeroComplesso n1 = stack.drop();
+            
+            if(!stack.isEmpty()){
+                
+                NumeroComplesso n2 = stack.drop();
+                NumeroComplesso n3 = calcolatore.divide(n1,n2);
+                if(n3==null){
+                    mw.CantDivideByZeroMessage();
+                }else{
+                    stack.add(n3);
+                }
+                
+            }else{
+                
+                stack.add(n1);
+                mw.NoValueInStackToOperateMessage();
+                
+            }
+               
+        }else{
+            mw.NoValueInStackToOperateMessage();
+        }
         
     }
     
     public void sqrtStack(){
         
-        
+        if(!stack.isEmpty()){
+            
+            NumeroComplesso n1 = stack.drop();
+            stack.add(calcolatore.sqrt(n1));
+             
+        }else{
+            mw.NoValueInStackToOperateMessage();
+        }
         
     }
     
     public void invertSign(){
         
-        
-        
-    }
-    
-    public void errorHandler(Error error){   
-
-        
+        if(!stack.isEmpty()){
+            
+            NumeroComplesso n1 = stack.drop();
+            stack.add(calcolatore.invertSign(n1));
+             
+        }else{
+            mw.NoValueInStackToOperateMessage();
+        }
         
     }
     
     public void inputHandler(String s){
         
-        
+        boolean is_valid = isNumeric(s);
+        if(!is_valid){
+            
+            is_valid = isCalculatorOpValid(s);
+            if(!is_valid){
+                
+                is_valid = isStackOpValid(s);
+                if(!is_valid){
+                    
+                    is_valid = isVarOpValid(s);
+                    if(!is_valid){
+                        
+                        mw.InputErrorMessage();
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
         
     }
     

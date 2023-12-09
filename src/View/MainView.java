@@ -5,6 +5,7 @@
 package View;
 
 import controller.Controller;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,12 +14,16 @@ import controller.Controller;
 public class MainView extends javax.swing.JFrame {
     
     private Controller controller; 
+    //Nombre del cuadro de dialogo que se muestra al ejecutar el main
+    private String appName;
     
     /**
      * Creates new form MainView
      */
     public MainView() {
         initComponents();
+        appName="Deepspace";
+        this.setTitle(appName);
         showView();
         
         inputView1.mw = this;
@@ -55,6 +60,11 @@ public class MainView extends javax.swing.JFrame {
     
     private void showView(){
         this.setVisible(true);
+    }
+    
+    //Obtiene el nombre de la aplicación
+    public String getAppName(){
+        return appName;
     }
 
     /**
@@ -110,6 +120,21 @@ public class MainView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void InputErrorMessage(){
+        JOptionPane.showMessageDialog(this, "", getAppName(), JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void NoValueInStackToOperateMessage(){
+        JOptionPane.showMessageDialog(this, "", getAppName(), JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void NoValueInVarToOperateMessage(){
+        JOptionPane.showMessageDialog(this, "", getAppName(), JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void CantDivideByZeroMessage(){
+        JOptionPane.showMessageDialog(this, "", getAppName(), JOptionPane.ERROR_MESSAGE);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private View.InfoView infoView1;
