@@ -29,6 +29,10 @@ public class VariablesView extends javax.swing.JPanel {
         GridLayout g = new GridLayout(ROWS,COLS);
         this.setLayout(g);
         
+        setUpVariables();
+    }
+    
+    private void setUpVariables(){
         for(char name = 'a'; name <= 'z'; ++name){
             varView var = new varView();
             var.setName(Character.toString(name));
