@@ -4,6 +4,7 @@
  */
 package controller;
 
+import View.MainView;
 import java.util.ArrayList;
 import model.NumeroComplesso;
 import model.CalcStack;
@@ -16,8 +17,16 @@ import model.Calcolatore;
 public class Controller {
     
     private ArrayList<NumeroComplesso> variables;
-    private CalcStack stack;
+    private CalcStack<NumeroComplesso> stack;
     private Calcolatore calcolatore;
+    private MainView mw;
+    
+    public Controller(){
+        mw = new MainView();
+        calcolatore = new Calcolatore();
+        stack = new CalcStack<>();
+        variables = new ArrayList<>();
+    }
     
     private boolean isNumeric(String input){
         
@@ -42,8 +51,6 @@ public class Controller {
                 
                 parte_real += input.charAt(j);
                 contador++;
-                
-                
             }
             
             if(input.charAt(contador)=='j'){
@@ -220,6 +227,8 @@ public class Controller {
     }
     
     private NumeroComplesso getVar(int var){
+        
+        return null;
         
     }
     

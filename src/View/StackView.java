@@ -19,12 +19,12 @@ public class StackView extends javax.swing.JPanel {
         nNumbers = 0;
     }
     
-    public void add(String num){
+    public void addNum(String num){
         jPanel1.add(new StackNumberView(num));
         ++nNumbers;
     }
     
-    public void delete(){
+    public void removeNum(){
         jPanel1.remove(--nNumbers);
     }
 
