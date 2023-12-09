@@ -228,25 +228,31 @@ public class Controller {
     
     private NumeroComplesso getVar(int var){
         
-        return null;
+        return(variables.get(var));
         
     }
     
     private void setVar(int var, NumeroComplesso n){
         
-        
+        variables.set(var, n);
         
     }
     
     public void substractVar(int var){
         
-        
+        double real = variables.get(var).getRealPart()-stack.lastElement().getRealPart();
+        double im = variables.get(var).getComplexPart()-stack.lastElement().getComplexPart();
+        NumeroComplesso n = new NumeroComplesso(real, im);
+        variables.set(var, n);
         
     }
     
     public void addVar(int var){
         
-        
+        double real = stack.lastElement().getRealPart()+variables.get(var).getRealPart();
+        double im = stack.lastElement().getComplexPart()+variables.get(var).getComplexPart();
+        NumeroComplesso n = new NumeroComplesso(real, im);
+        variables.set(var, n);
         
     }
     
@@ -299,11 +305,16 @@ public class Controller {
     }
     
     public void errorHandler(Error error){   
+
+        
         
     }
     
     public void inputHandler(String s){
         
+        
+        
     }
+    
     
 }
