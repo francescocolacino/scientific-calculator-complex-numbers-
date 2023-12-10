@@ -31,6 +31,7 @@ public class MainView extends javax.swing.JFrame {
     
     public void updateView(){
         stackView.updateView();
+        varView.updateView();
     }
     
     public void setController(Controller c){

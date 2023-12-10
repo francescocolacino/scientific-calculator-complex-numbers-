@@ -49,6 +49,11 @@ public class VariablesView extends javax.swing.JPanel {
     public void setVariable(char c, String num){
         variables.get(c - 'a').setText(num);
     }
+    
+    public void updateView(){
+        this.repaint();
+        this.revalidate();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
