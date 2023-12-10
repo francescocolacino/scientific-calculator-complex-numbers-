@@ -322,7 +322,7 @@ public class Controller {
             if(!stack.isEmpty()){
                 
                 NumeroComplesso n2 = stack.drop();
-                //stack.add(calcolatore.add(n1,n2));
+                stack.add(calcolatore.add(n1,n2));
                 
             }else{
                 
@@ -347,7 +347,7 @@ public class Controller {
             if(!stack.isEmpty()){
                 
                 NumeroComplesso n2 = stack.drop();
-                //stack.add(calcolatore.substract(n1,n2));
+                stack.add(calcolatore.substract(n1,n2));
                 
             }else{
                 
@@ -372,7 +372,7 @@ public class Controller {
             if(!stack.isEmpty()){
                 
                 NumeroComplesso n2 = stack.drop();
-                //stack.add(calcolatore.multiply(n1,n2));
+                stack.add(calcolatore.multiply(n1,n2));
                 
             }else{
                 
@@ -397,12 +397,12 @@ public class Controller {
             if(!stack.isEmpty()){
                 
                 NumeroComplesso n2 = stack.drop();
-                /*NumeroComplesso n3 = calcolatore.divide(n1,n2);
+                NumeroComplesso n3 = calcolatore.divide(n1,n2);
                 if(n3==null){
                 mw.CantDivideByZeroMessage();
                 }else{
                 stack.add(n3);
-                }*/
+                }
                 
             }else{
                 
@@ -422,7 +422,7 @@ public class Controller {
         if(!stack.isEmpty()){
             
             NumeroComplesso n1 = stack.drop();
-            //stack.add(calcolatore.sqrt(n1));
+            stack.add(calcolatore.sqrt(n1));
              
         }else{
             mw.NoValueInStackToOperateMessage();

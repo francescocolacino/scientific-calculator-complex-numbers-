@@ -68,4 +68,37 @@ public class NumeroComplesso {
         return(realpart + sign + imaginarypart);
         
     }
+    
+    public double getModule(){
+        
+        return(Math.sqrt((realPart*realPart)+(imaginaryPart*imaginaryPart)));
+        
+    }
+    
+    public double getAngle(){
+        
+        double angle;
+        
+        if(realPart==0&&imaginaryPart==0){
+            angle=0;
+        }else if(realPart==0){
+            if(imaginaryPart>0){
+                angle = Math.PI/2;
+            }else{
+                angle = (3*Math.PI)/2;
+            }
+        }else if(realPart>0&&imaginaryPart>0){
+            angle=Math.atan(imaginaryPart/realPart);
+        }else if(realPart<0&&imaginaryPart>0){
+            angle=Math.PI - Math.atan(imaginaryPart/Math.abs(realPart));
+        }else if(realPart<0&&imaginaryPart<0){
+            angle=Math.PI + Math.atan(Math.abs(imaginaryPart)/Math.abs(realPart));
+        }else{
+            angle=2*Math.PI + Math.atan(Math.abs(imaginaryPart)/realPart);
+        }
+        
+        return(angle);
+        
+    }
+    
 }
