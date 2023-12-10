@@ -33,7 +33,8 @@ public class Controller {
         
         boolean es_num = false;
         
-        if(input!=null && !input.isEmpty() && ((input.charAt(0)>='0'&&input.charAt(0)<='9')
+        if(input!=null && !input.isEmpty() && 
+                ((input.charAt(0)>='0'&&input.charAt(0)<='9')
                 ||((input.charAt(0)=='+'||input.charAt(0)=='-')&&input.length()>1))){
             
             int contador=0;
@@ -48,67 +49,77 @@ public class Controller {
                 
             }
             
-            for(int j=contador; input.charAt(j)>='0'&&input.charAt(j)<='9'&&j<input.length();j++){
-                
-                parte_real += input.charAt(j);
+            for(; input.charAt(contador)>='0'&&input.charAt(contador)<='9' && contador <input.length()-1;contador++){
+                parte_real += input.charAt(contador);
+            }
+            
+            if(input.charAt(contador)>='0'&&input.charAt(contador)<='9'){
+                parte_real += input.charAt(contador);
                 contador++;
             }
             
-            if(input.charAt(contador)=='j'){
+            if(contador < input.length()){
+                if(input.charAt(contador)=='j'){
                 
-                parte_imaginary = parte_real;
-                parte_real = "0";
-                
+                    parte_imaginary = parte_real;
+                    parte_real = "0";
+                    ++contador;
+
+                }
             }
             
-            if((contador<input.length()&&(input.charAt(contador)=='+'||input.charAt(contador)=='-')
-                    &&!parte_real.isEmpty()) || (contador<input.length()&&!parte_real.isEmpty())){
+            if(contador<input.length()){
+                if(((input.charAt(contador)=='+'||input.charAt(contador)=='-')
+                    &&!parte_real.isEmpty()) || (!parte_real.isEmpty())){
                 
-                if(input.charAt(contador)=='+' || input.charAt(contador)=='-'){
-                    
-                    parte_imaginary += input.charAt(contador);
-                    contador++;
-                    
-                }
-                
-                if(input.charAt(contador)>='0'&&input.charAt(contador)<='9'&&contador<input.length()-1){
-                    
-                    for(int j=contador; input.charAt(j)>='0'&&input.charAt(j)<='9'&&j<input.length()-1;j++){
-                        
-                        parte_imaginary += input.charAt(j);
+                    if(input.charAt(contador)=='+' || input.charAt(contador)=='-'){
+
+                        parte_imaginary += input.charAt(contador);
                         contador++;
-                        
+
                     }
                     
-                    if(contador!=input.length()||input.charAt(contador)!='j'){
-                        
-                        es_num = false;
-                        
+                    if(contador<input.length()){
+                        if(input.charAt(contador)>='0'&&input.charAt(contador)<='9'){
+
+                            for(; input.charAt(contador)>='0'&&input.charAt(contador)<='9'&&contador<input.length()-1;contador++){
+                                parte_imaginary += input.charAt(contador);
+                            }
+                            
+                            if(input.charAt(contador)>='0'&&input.charAt(contador)<='9'){
+                                parte_imaginary += input.charAt(contador);
+                                ++contador;
+                            }
+
+                            if(contador!=input.length()-1||input.charAt(contador)!='j'){
+
+                                es_num = false;
+
+                            }
+
+                        } else{
+
+                            es_num = false;
+
+                        }
                     }
                     
                 } else{
-                    
+
                     es_num = false;
-                    
+
                 }
-                
-            } else{
-                
-                es_num = false;
-                
             }
             
+            
             if(es_num){
-                
                 if(parte_imaginary.isEmpty()){
-                    
                     stack.add(new NumeroComplesso(Double.parseDouble(parte_real)));
-                    
                 }else{
-                    
                     stack.add(new NumeroComplesso(Double.parseDouble(parte_real), Double.parseDouble(parte_imaginary)));
-                    
                 }
+                
+                mw.addToStack(stack.lastElement().toString());
                 
             }
             
@@ -249,7 +260,7 @@ public class Controller {
             variables.set(var, n);
             
         }else if(stack.isEmpty()){
-            mw.NoValueInStackToMessage();
+            mw.NoValueInStackToOperateMessage();
         }else {
             mw.NoValueInVarToOperateMessage();
         }
@@ -311,7 +322,7 @@ public class Controller {
             if(!stack.isEmpty()){
                 
                 NumeroComplesso n2 = stack.drop();
-                stack.add(calcolatore.add(n1,n2));
+                //stack.add(calcolatore.add(n1,n2));
                 
             }else{
                 
@@ -336,7 +347,7 @@ public class Controller {
             if(!stack.isEmpty()){
                 
                 NumeroComplesso n2 = stack.drop();
-                stack.add(calcolatore.substract(n1,n2));
+                //stack.add(calcolatore.substract(n1,n2));
                 
             }else{
                 
@@ -361,7 +372,7 @@ public class Controller {
             if(!stack.isEmpty()){
                 
                 NumeroComplesso n2 = stack.drop();
-                stack.add(calcolatore.multiply(n1,n2));
+                //stack.add(calcolatore.multiply(n1,n2));
                 
             }else{
                 
@@ -386,12 +397,12 @@ public class Controller {
             if(!stack.isEmpty()){
                 
                 NumeroComplesso n2 = stack.drop();
-                NumeroComplesso n3 = calcolatore.divide(n1,n2);
+                /*NumeroComplesso n3 = calcolatore.divide(n1,n2);
                 if(n3==null){
-                    mw.CantDivideByZeroMessage();
+                mw.CantDivideByZeroMessage();
                 }else{
-                    stack.add(n3);
-                }
+                stack.add(n3);
+                }*/
                 
             }else{
                 
@@ -411,7 +422,7 @@ public class Controller {
         if(!stack.isEmpty()){
             
             NumeroComplesso n1 = stack.drop();
-            stack.add(calcolatore.sqrt(n1));
+            //stack.add(calcolatore.sqrt(n1));
              
         }else{
             mw.NoValueInStackToOperateMessage();
@@ -424,7 +435,7 @@ public class Controller {
         if(!stack.isEmpty()){
             
             NumeroComplesso n1 = stack.drop();
-            stack.add(calcolatore.invertSign(n1));
+            //stack.add(calcolatore.invertSign(n1));
              
         }else{
             mw.NoValueInStackToOperateMessage();

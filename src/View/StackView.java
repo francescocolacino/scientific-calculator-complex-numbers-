@@ -40,6 +40,11 @@ public class StackView extends javax.swing.JPanel {
         nNumbers = 0;
         gl.setRows(0);
     }
+    
+    public void updateView(){
+        this.repaint();
+        this.revalidate();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -48,7 +48,24 @@ public class NumeroComplesso {
     
     public String toString(){
         
-        return(String.valueOf(realPart)+String.valueOf(imaginaryPart));
+        String sign = "+";
+        String realpart = "";
+        String imaginarypart = "";
+        
+        if(imaginaryPart < 0){
+            sign = "-";
+        }else if(imaginaryPart == 0)
+            sign = "";
+        
+        if(realPart != 0){
+            realpart = String.valueOf(realPart);
+        }
+        
+        if(imaginaryPart != 0){
+            imaginarypart = String.valueOf(Math.abs(imaginaryPart)) + "j";
+        }
+        
+        return(realpart + sign + imaginarypart);
         
     }
 }

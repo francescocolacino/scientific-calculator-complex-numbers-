@@ -29,6 +29,10 @@ public class MainView extends javax.swing.JFrame {
         inputView1.mw = this;
     }
     
+    public void updateView(){
+        stackView.updateView();
+    }
+    
     public void setController(Controller c){
         controller = c;
     }
@@ -36,6 +40,7 @@ public class MainView extends javax.swing.JFrame {
     public void recibeInput(String s){
         System.out.print(s);
         controller.inputHandler(s);
+        this.updateView();
     }
     
     public void addToStack(String num){
