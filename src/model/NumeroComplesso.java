@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author gabriel
@@ -51,18 +53,24 @@ public class NumeroComplesso {
         String sign = "+";
         String realpart = "";
         String imaginarypart = "";
+        DecimalFormat numberFormat = new DecimalFormat("#.###");
+
         
-        if(imaginaryPart < 0){
+        if((int)(imaginaryPart*1000) < 0){
             sign = "-";
-        }else if(imaginaryPart == 0)
+        }else if((int)(imaginaryPart*1000) == 0)
             sign = "";
         
-        if(realPart != 0){
-            realpart = String.valueOf(realPart);
+        if((int)(realPart*1000) != 0){
+            realpart = numberFormat.format(realPart);
+        }
+        else if((int)(this.imaginaryPart*1000) == 0){
+            realpart = "0";
         }
         
-        if(imaginaryPart != 0){
-            imaginarypart = String.valueOf(Math.abs(imaginaryPart)) + "j";
+        if((int)(imaginaryPart*1000) != 0){
+            System.out.print("imaginari part: " + imaginaryPart);
+            imaginarypart = numberFormat.format(Math.abs(imaginaryPart)) + "j";
         }
         
         return(realpart + sign + imaginarypart);
