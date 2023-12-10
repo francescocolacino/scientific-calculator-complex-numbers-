@@ -22,11 +22,21 @@ public class MainView extends javax.swing.JFrame {
      */
     public MainView() {
         initComponents();
-        appName="Deepspace";
+        appName="Calcolatore";
         this.setTitle(appName);
         showView();
         
         inputView1.mw = this;
+        
+        //Instrucciones para que la
+        //aplicación finalice cuando se cierra la ventana principal de la aplicación.
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                controller.finish(0);
+            }
+        });
     }
     
     public void updateView(){
@@ -126,20 +136,27 @@ public class MainView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public boolean confirmExitMessage(){
+        
+        return (JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?", getAppName(), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
+        
+    }
+    
     public void InputErrorMessage(){
-        JOptionPane.showMessageDialog(this, "", getAppName(), JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "The input is not correct. Please check the input", getAppName(), JOptionPane.ERROR_MESSAGE);
     }
     
     public void NoValueInStackToOperateMessage(){
-        JOptionPane.showMessageDialog(this, "", getAppName(), JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "There is not enough values in the stack. Please introduce a value", getAppName(), JOptionPane.ERROR_MESSAGE);
     }
     
     public void NoValueInVarToOperateMessage(){
-        JOptionPane.showMessageDialog(this, "", getAppName(), JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "There is not a value in the var selected. Please introduce a value", getAppName(), JOptionPane.ERROR_MESSAGE);
     }
     
     public void CantDivideByZeroMessage(){
-        JOptionPane.showMessageDialog(this, "", getAppName(), JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Is not possible to divide by zero. Please introduce a different value", getAppName(), JOptionPane.ERROR_MESSAGE);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

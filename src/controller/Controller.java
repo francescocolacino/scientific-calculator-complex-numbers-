@@ -470,5 +470,11 @@ public class Controller {
         
     }
     
+    public void finish (int i) {
+        if (mw.confirmExitMessage()) {
+          System.exit(i);
+        }
+    }
+    
     
 }
