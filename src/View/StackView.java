@@ -42,8 +42,12 @@ public class StackView extends javax.swing.JPanel {
     }
     
     public void updateView(){
+        
+        
         this.repaint();
         this.revalidate();
+        
+        
     }
 
     /**

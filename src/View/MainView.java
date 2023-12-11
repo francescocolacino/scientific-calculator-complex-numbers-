@@ -42,6 +42,8 @@ public class MainView extends javax.swing.JFrame {
     public void updateView(){
         stackView.updateView();
         varView.updateView();
+        
+        repaint();
     }
     
     public void setController(Controller c){
@@ -83,6 +85,27 @@ public class MainView extends javax.swing.JFrame {
     public void processUnaryOp(String result){
         this.stackView.removeNum();
         this.stackView.addNum(result);
+    }
+    
+    public void drop(){
+        this.stackView.removeNum();
+    }
+    
+    public void dup(String result){
+        this.stackView.addNum(result);
+    }
+    
+    public void swap(String n1, String n2){
+        this.stackView.removeNum();
+        this.stackView.removeNum();
+        this.stackView.addNum(n1);
+        this.stackView.addNum(n2);
+    }
+    
+    public void over(String n){
+        
+        this.stackView.addNum(n);
+        
     }
     
     private void showView(){

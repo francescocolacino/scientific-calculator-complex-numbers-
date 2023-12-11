@@ -25,7 +25,7 @@ public class Controller {
         mw.setController(this);
         stack = new CalcStack<>();
         variables = new ArrayList<>();
-        for(int i = 'a'; i < 'z'; ++i){
+        for(int i = 'a'; i <= 'z'; ++i){
             variables.add(null);
         }
     }
@@ -181,22 +181,28 @@ public class Controller {
                 case "clear":
                     stack.clear();
                     es_op=true;
+                    mw.cleanStack();
                     break;
                 case "drop":
                     stack.drop();
                     es_op=true;
+                    mw.drop();
                     break;
                 case "dup":
                     stack.dup();
                     es_op=true;
+                    mw.dup(stack.lastElement().toString());
                     break;
                 case "swap":
+                    NumeroComplesso n1 = stack.lastElement();
                     stack.swap();
                     es_op=true;
+                    mw.swap(n1.toString(), stack.lastElement().toString());
                     break;
                 case "over":
                     stack.over();
                     es_op=true;
+                    mw.over(stack.lastElement().toString());
                     break;    
                     
             }
@@ -260,7 +266,7 @@ public class Controller {
         
         if(variables.get(var)!=null&&!stack.isEmpty()){
             NumeroComplesso n1 = variables.get(var);
-            NumeroComplesso n2 = stack.drop();
+            NumeroComplesso n2 = stack.lastElement();
             
             NumeroComplesso n = Calcolatore.substract(n1,n2);
             this.setVar(var, n);
@@ -277,7 +283,7 @@ public class Controller {
     public void addVar(int var){
         
         if(variables.get(var)!=null&&!stack.isEmpty()){
-            NumeroComplesso n1 = stack.drop();
+            NumeroComplesso n1 = stack.lastElement();
             NumeroComplesso n2 = variables.get(var);
 
             NumeroComplesso n = Calcolatore.add(n1, n2);
@@ -295,10 +301,11 @@ public class Controller {
     public void varToStack(int var){
         
         NumeroComplesso n = getVar(var);
-        System.out.print(n);
         if(n!=null){
             mw.addToStack(n.toString());
             stack.add(n);
+            mw.setVar(var, Character.toString(var+'a'));           
+            mw.updateView();
             
         }else{
             mw.NoValueInVarToOperateMessage();
@@ -457,7 +464,6 @@ public class Controller {
     public void inputHandler(String s){
         
         boolean is_valid = isNumeric(s);
-                System.out.print("bbbbbbbbbbbbbbbbbbbbbbb");
 
         if(!is_valid){
             
