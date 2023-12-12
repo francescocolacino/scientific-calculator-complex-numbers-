@@ -14,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
  public class CalcStackTest {
  
+     private CalcStack<Integer> calcStack;
+     
     public CalcStackTest() {
     }
     
@@ -27,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
     
     @BeforeEach
     public void setUp() {
+        calcStack = new CalcStack<>();
     }
     
     @AfterEach
@@ -54,8 +57,8 @@ import static org.junit.jupiter.api.Assertions.*;
         calcStack.push(3);
         assertTrue(calcStack.dup());
         assertEquals(2, calcStack.size());
-        assertEquals(3, calcStack.pop());
-        assertEquals(3, calcStack.pop());
+        assertEquals(3, calcStack.drop());
+        assertEquals(3, calcStack.drop());
     }
 
 
@@ -73,8 +76,8 @@ import static org.junit.jupiter.api.Assertions.*;
         calcStack.push(5);
         assertTrue(calcStack.swap());
         assertEquals(2, calcStack.size());
-        assertEquals(4, calcStack.pop());
-        assertEquals(5, calcStack.pop());
+        assertEquals(4, calcStack.drop());
+        assertEquals(5, calcStack.drop());
     }
 
 

@@ -15,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
   
  public class NumeroComplessoTest {
  
+     private NumeroComplesso numeroComplesso;
+     
     public NumeroComplessoTest() {
     }
     
@@ -28,6 +30,7 @@ import static org.junit.jupiter.api.Assertions.*;
     
     @BeforeEach
     public void setUp() {
+        numeroComplesso = new NumeroComplesso(3,4);
     }
     
     @AfterEach

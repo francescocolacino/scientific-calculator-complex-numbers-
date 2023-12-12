@@ -16,8 +16,8 @@ import model.Calcolatore;
  */
 public class Controller {
     
-    private ArrayList<NumeroComplesso> variables;
-    private CalcStack<NumeroComplesso> stack;
+    public ArrayList<NumeroComplesso> variables;
+    public CalcStack<NumeroComplesso> stack;
     public MainView mw;
     
     public Controller(){
@@ -261,6 +261,8 @@ public class Controller {
         mw.updateView();
         
     }
+    
+    
     
     public void substractVar(int var){
         
