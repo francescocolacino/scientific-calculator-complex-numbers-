@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fpcolacino
  */
 
- public class CalcStack {
+ public class CalcStackTest {
  
     public CalcStackTest() {
     }
