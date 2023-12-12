@@ -12,13 +12,25 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fpcolacino
  */
 
-public class CalcStackTest {
-
-    private CalcStack<Integer> calcStack;
-
+ public class CalcStack {
+ 
+    public CalcStackTest() {
+    }
+    
+    @BeforeAll
+    public static void setUpClass() {
+    }
+    
+    @AfterAll
+    public static void tearDownClass() {
+    }
+    
     @BeforeEach
-    void setUp() {
-        calcStack = new CalcStack<>();
+    public void setUp() {
+    }
+    
+    @AfterEach
+    public void tearDown() {
     }
 
  /*
