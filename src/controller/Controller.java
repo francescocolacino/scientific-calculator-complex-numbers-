@@ -184,25 +184,34 @@ public class Controller {
                     mw.cleanStack();
                     break;
                 case "drop":
-                    stack.drop();
+                    
                     es_op=true;
-                    mw.drop();
+                    if(stack.drop() != null)
+                        mw.drop();
+                    else
+                        mw.NoValueInStackToOperateMessage();
                     break;
                 case "dup":
-                    stack.dup();
                     es_op=true;
-                    mw.dup(stack.lastElement().toString());
+                    if(stack.dup())
+                        mw.dup(stack.lastElement().toString());
+                    else
+                        mw.NoValueInStackToOperateMessage();
                     break;
                 case "swap":
                     NumeroComplesso n1 = stack.lastElement();
-                    stack.swap();
                     es_op=true;
-                    mw.swap(n1.toString(), stack.lastElement().toString());
+                    if(stack.swap())
+                        mw.swap(n1.toString(), stack.lastElement().toString());
+                    else
+                        mw.NoValueInStackToOperateMessage();
                     break;
                 case "over":
-                    stack.over();
                     es_op=true;
-                    mw.over(stack.lastElement().toString());
+                    if(stack.over())
+                        mw.over(stack.lastElement().toString());
+                    else
+                        mw.NoValueInStackToOperateMessage();
                     break;    
                     
             }

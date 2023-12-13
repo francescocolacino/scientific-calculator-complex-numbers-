@@ -130,9 +130,9 @@ public class ControllerTest {
         
         instance.variables.set(0, oppReal);
         instance.varToStack(0);
-        
         assertEquals(oppReal,instance.stack.lastElement());
         assertEquals(stackSize+1,instance.stack.size());
+        assertEquals(null,instance.variables.get(0));
     }
 
     /**
@@ -145,6 +145,13 @@ public class ControllerTest {
         int stackSize = instance.stack.size();
         
         NumeroComplesso n = instance.stack.lastElement();
+        
+        instance.stackToVar(0);
+        
+        assertEquals(n,instance.variables.get(0));
+        assertEquals(stackSize-1,instance.stack.size());
+        
+        instance.stack.clear();
         
         instance.stackToVar(0);
         
@@ -170,6 +177,7 @@ public class ControllerTest {
         instance.addStack();
         assertEquals(new NumeroComplesso(9,12), instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
+        
         instance.addStack();
         assertEquals(new NumeroComplesso(9,12), instance.stack.lastElement());
         assertEquals(size,instance.stack.size());
@@ -193,6 +201,7 @@ public class ControllerTest {
         instance.substractStack();
         assertEquals(new NumeroComplesso(-9,-12), instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
+        
         instance.substractStack();
         assertEquals(new NumeroComplesso(-9,-12), instance.stack.lastElement());
         assertEquals(size,instance.stack.size());
@@ -333,6 +342,11 @@ public class ControllerTest {
         instance.sqrtStack();
         assertEquals(n,instance.stack.lastElement());
         assertEquals(size,instance.stack.size());
+        
+        instance.stack.clear();
+
+        instance.sqrtStack();
+        assertEquals(0,instance.stack.size());
 
     }
 
@@ -360,6 +374,11 @@ public class ControllerTest {
         instance.invertSign();
         assertEquals(n,instance.stack.lastElement());
         assertEquals(size,instance.stack.size());
+        
+        instance.stack.clear();
+
+        instance.invertSign();
+        assertEquals(0,instance.stack.size());
     }
 
     /**
@@ -369,26 +388,122 @@ public class ControllerTest {
     public void testInputHandler() {
         System.out.println("inputHandler");
     
-        instance.stack.clear();
         String aux = "SDLKFLSKDMFL";
         
         instance.inputHandler(aux);
-        assertEquals(0,instance.stack.size());
+        assertEquals(4,instance.stack.size());
 
         aux = "8";
         instance.inputHandler(aux);
         assertEquals(new NumeroComplesso(8),instance.stack.lastElement());
-        assertEquals(1,instance.stack.size());
+        assertEquals(5,instance.stack.size());
         
         aux = "8j";
         instance.inputHandler(aux);
         assertEquals(new NumeroComplesso(0,8),instance.stack.lastElement());
-        assertEquals(2,instance.stack.size());
+        assertEquals(6,instance.stack.size());
         
         aux = "1+8j";
         instance.inputHandler(aux);
         assertEquals(new NumeroComplesso(1,8),instance.stack.lastElement());
+        assertEquals(7,instance.stack.size());
+        
+        aux = "+";
+        instance.inputHandler(aux);
+        assertEquals(new NumeroComplesso(1,16),instance.stack.lastElement());
+        assertEquals(6,instance.stack.size());
+        
+        aux = "/";
+        instance.inputHandler(aux);
+        assertEquals(new NumeroComplesso(0.125,2),instance.stack.lastElement());
+        assertEquals(5,instance.stack.size());
+        
+        aux = "-";
+        instance.inputHandler(aux);
+        assertEquals(new NumeroComplesso(0.125,2),instance.stack.lastElement());
+        assertEquals(4,instance.stack.size());
+        
+        aux = "*";
+        instance.inputHandler(aux);
+        assertEquals(new NumeroComplesso(-20,1.25),instance.stack.lastElement());
+        assertEquals(3,instance.stack.size());    
+        
+        aux = "+-";
+        instance.inputHandler(aux);
+        assertEquals(new NumeroComplesso(20,-1.25),instance.stack.lastElement());
         assertEquals(3,instance.stack.size());
+        
+        aux = "sqrt";
+        NumeroComplesso numAux = Calcolatore.sqrt(instance.stack.lastElement());
+        instance.inputHandler(aux);
+        assertEquals(numAux,instance.stack.lastElement());
+        assertEquals(3,instance.stack.size());
+        
+        aux = ">a";
+        instance.inputHandler(aux);
+        assertEquals(new NumeroComplesso(10),instance.stack.lastElement());
+        assertEquals(2,instance.stack.size());
+        assertEquals(numAux,instance.variables.get(0));
+        
+        aux = "+a";
+        numAux = Calcolatore.add(numAux, instance.stack.lastElement());
+        instance.inputHandler(aux);
+        assertEquals(new NumeroComplesso(-1,2),instance.stack.lastElement());
+        assertEquals(1,instance.stack.size());
+        assertEquals(numAux,instance.variables.get(0)); 
+        
+        aux = "-a";
+        numAux = Calcolatore.substract(numAux, instance.stack.lastElement());
+        instance.inputHandler(aux);
+        assertEquals(0,instance.stack.size());
+        assertEquals(numAux,instance.variables.get(0));
+        
+        aux = "<a";
+        instance.inputHandler(aux);
+        assertEquals(numAux,instance.stack.lastElement());
+        assertEquals(1,instance.stack.size());
+        assertEquals(null,instance.variables.get(0));
+        
+        aux = "drop";
+        instance.inputHandler(aux);
+        assertEquals(0,instance.stack.size());
+        aux = "drop";
+        instance.inputHandler(aux);
+        assertEquals(0,instance.stack.size());
+        
+        numAux = new NumeroComplesso(7);
+        
+        instance.stack.add(numAux);
+        
+        aux = "clear";
+        instance.inputHandler(aux);
+        assertEquals(0,instance.stack.size());
+        aux = "clear";
+        instance.inputHandler(aux);
+        assertEquals(0,instance.stack.size());
+        
+        aux = "dup";
+        instance.inputHandler(aux);
+        assertEquals(0,instance.stack.size());
+        instance.stack.add(numAux);
+        aux = "dup";
+        instance.inputHandler(aux);
+        assertEquals(2,instance.stack.size());
+        assertEquals(numAux,instance.stack.lastElement());
+
+        numAux = new NumeroComplesso(9);
+        instance.stack.add(numAux);
+        aux = "swap";
+        instance.inputHandler(aux);
+        assertEquals(3,instance.stack.size());
+        assertEquals(new NumeroComplesso(8),instance.stack.lastElement());
+        
+        aux = "over";
+        instance.inputHandler(aux);
+        assertEquals(4,instance.stack.size());
+        assertEquals(numAux,instance.stack.lastElement());
+        
+        
     }
     
 }
