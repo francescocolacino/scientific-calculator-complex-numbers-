@@ -48,6 +48,7 @@ public class NumeroComplesso {
         
     }
     
+    @Override
     public String toString(){
         
         String sign = "+";
@@ -105,8 +106,32 @@ public class NumeroComplesso {
             angle=2*Math.PI + Math.atan(Math.abs(imaginaryPart)/realPart);
         }
         
-        return(angle);
-        
+        return(angle);   
+    }
+    
+    
+    @Override
+    public boolean equals(Object o) {
+ 
+        // If the object is compared with itself then return true  
+        if (o == this) {
+            return true;
+        }
+ 
+        /* Check if o is an instance of Complex or not
+          "null instanceof [type]" also returns false */
+        if (!(o instanceof NumeroComplesso)) {
+            return false;
+        }
+         
+        // typecast o to Complex so that we can compare data members 
+        NumeroComplesso c = (NumeroComplesso) o;
+         
+        // Compare the data members and return accordingly 
+        return Double.compare(this.getRealPart(), 
+                c.getRealPart()) == 0
+                && Double.compare(this.getComplexPart(), 
+                        c.getComplexPart()) == 0;
     }
     
 }

@@ -268,7 +268,7 @@ public class Controller {
         
         if(variables.get(var)!=null&&!stack.isEmpty()){
             NumeroComplesso n1 = variables.get(var);
-            NumeroComplesso n2 = stack.lastElement();
+            NumeroComplesso n2 = stack.drop();
             
             NumeroComplesso n = Calcolatore.substract(n1,n2);
             this.setVar(var, n);
@@ -285,7 +285,7 @@ public class Controller {
     public void addVar(int var){
         
         if(variables.get(var)!=null&&!stack.isEmpty()){
-            NumeroComplesso n1 = stack.lastElement();
+            NumeroComplesso n1 = stack.drop();
             NumeroComplesso n2 = variables.get(var);
 
             NumeroComplesso n = Calcolatore.add(n1, n2);
@@ -306,6 +306,7 @@ public class Controller {
         if(n!=null){
             mw.addToStack(n.toString());
             stack.add(n);
+            this.variables.set(var, null);
             mw.setVar(var, Character.toString(var+'a'));           
             mw.updateView();
             
