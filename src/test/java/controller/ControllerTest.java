@@ -528,6 +528,7 @@ public class ControllerTest {
         assertEquals(numAux,instance.stack.lastElement());
         
         //Incorrect number input
+
         aux = "1j+8j";
         instance.inputHandler(aux);
         assertEquals(new NumeroComplesso(1,8),instance.stack.lastElement());

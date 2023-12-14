@@ -611,6 +611,10 @@ public class Controller {
         
     }
     
+    public void show(){
+        mw.showView();
+    }
+    
     public void finish (int i) {
         if (mw.confirmExitMessage()) {
           System.exit(i);

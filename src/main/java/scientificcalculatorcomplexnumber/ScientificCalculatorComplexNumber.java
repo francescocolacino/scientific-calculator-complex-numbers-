@@ -18,6 +18,7 @@ public class ScientificCalculatorComplexNumber {
     public static void main(String[] args) {
         // TODO code application logic here
         Controller c = new Controller();
+        c.show();
     }
     
 }

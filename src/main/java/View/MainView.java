@@ -108,7 +108,7 @@ public class MainView extends javax.swing.JFrame {
         
     }
     
-    private void showView(){
+    public void showView(){
         this.setVisible(true);
     }
     

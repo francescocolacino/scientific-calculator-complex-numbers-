@@ -1,9 +1,6 @@
 package model;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,25 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
  public class CalcStackTest {
  
      private CalcStack<Integer> calcStack;
-     
-    public CalcStackTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
     
     @BeforeEach
     public void setUp() {
         calcStack = new CalcStack<>();
-    }
-    
-    @AfterEach
-    public void tearDown() {
     }
 
  /*
@@ -41,7 +23,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 
-    // Testa il metodo drop per verificare che questo rimuova correttamente l'elemento in cima dallo stack.
+    // Testa il metodo drop per verificare che questo rimuova 
+    // correttamente l'elemento in cima dallo stack.
     @Test
     public void testDrop() {
         calcStack.push(1);
@@ -51,7 +34,8 @@ import static org.junit.jupiter.api.Assertions.*;
     }
 
 
-    // Testa dup per verificare che duplichi correttamente l'elemento che si trova in cima allo stack.
+    // Testa dup per verificare che duplichi correttamente 
+    // l'elemento che si trova in cima allo stack.
     @Test
     public void testDup() {
         calcStack.push(3);
@@ -62,14 +46,16 @@ import static org.junit.jupiter.api.Assertions.*;
     }
 
 
-    // Testa il metodo dup su uno stack vuoto in modo che restituisca false e mantenga lo stack vuoto.
+    // Testa il metodo dup su uno stack vuoto in modo che 
+    // restituisca false e mantenga lo stack vuoto.
     @Test
     public void testDupEmptyStack() {
         assertFalse(calcStack.dup());
         assertEquals(0, calcStack.size());
     }
 
-    // Testa il metodo swap per verificare lo scambio corretto degli elementi in cima allo stack.
+    // Testa il metodo swap per verificare lo scambio corretto 
+    // degli elementi in cima allo stack.
     @Test
     public void testSwap() {
         calcStack.push(4);
@@ -81,7 +67,8 @@ import static org.junit.jupiter.api.Assertions.*;
     }
 
 
-    // Testa il metodo swap() su uno stack con meno di due elementi, dovrebbe restituire false e mantenere lo stack inalterato.
+    // Testa il metodo swap() su uno stack con meno di due elementi, 
+    // dovrebbe restituire false e mantenere lo stack inalterato.
     @Test
     public void testSwapNotEnoughElements() {
         calcStack.push(6);
@@ -90,7 +77,8 @@ import static org.junit.jupiter.api.Assertions.*;
     }
 
 
-    // Testa il metodo over per verificare la duplicazione corretta del secondo elemento dal top dello stack.
+    // Testa il metodo over per verificare la duplicazione corretta 
+    // del secondo elemento dal top dello stack.
     @Test
     public void testOver() {
         calcStack.push(7);
@@ -103,7 +91,8 @@ import static org.junit.jupiter.api.Assertions.*;
     }
 
 
-    // Testa il metodo over() su uno stack con meno di due elementi, dovrebbe restituire false e mantenere lo stack inalterato.
+    // Testa il metodo over() su uno stack con meno di due elementi, 
+    // dovrebbe restituire false e mantenere lo stack inalterato.
     @Test
     public void testOverNotEnoughElements() {
         calcStack.push(9);
