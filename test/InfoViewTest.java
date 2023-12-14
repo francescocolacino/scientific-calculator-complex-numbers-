@@ -1,5 +1,6 @@
-package view;
+package View;
 
+import model.CalcStack;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class InfoViewTest {
  
+    CalcStack calcStack;
           
     public InfoViewTest() {
     }
@@ -35,7 +37,7 @@ public class InfoViewTest {
     public void tearDown() {
     }
 
-@Test
+    @Test
     // Verifica che gli elementi dell'interfaccia utente siano inizializzati correttamente
     public void testInitialization() {
         assertNotNull(frame.label("idcomponente"));  
