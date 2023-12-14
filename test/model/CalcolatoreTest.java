@@ -17,6 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class CalcolatoreTest {
     
+    NumeroComplesso opp1;
+    NumeroComplesso opp2;
+    NumeroComplesso oppReal;
+    NumeroComplesso oppComplex;
+    NumeroComplesso oppZero;
+    
     public CalcolatoreTest() {
     }
     
@@ -30,6 +36,11 @@ public class CalcolatoreTest {
     
     @BeforeEach
     public void setUp() {
+        opp1 = new NumeroComplesso(-1,2);
+        opp2 = new NumeroComplesso(2,-3);
+        oppReal = new NumeroComplesso(10);
+        oppComplex = new NumeroComplesso(0,10);
+        oppZero = new NumeroComplesso(0);
     }
     
     @AfterEach
@@ -42,11 +53,19 @@ public class CalcolatoreTest {
     @Test
     public void testAdd() {
         System.out.println("add");
-        NumeroComplesso n1 = null;
-        NumeroComplesso n2 = null;
-        NumeroComplesso expResult = null;
-        NumeroComplesso result = Calcolatore.add(n1, n2);
-        assertEquals(expResult, result);
+        assertEquals(new NumeroComplesso(1, -1), Calcolatore.add(opp1, opp2));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(9, 2), Calcolatore.add(opp1, oppReal));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(-1, 12), Calcolatore.add(opp1, oppComplex));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(opp1, Calcolatore.add(opp1, oppZero));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(10, 10), Calcolatore.add(oppReal, oppComplex));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -57,11 +76,19 @@ public class CalcolatoreTest {
     @Test
     public void testSubstract() {
         System.out.println("substract");
-        NumeroComplesso n1 = null;
-        NumeroComplesso n2 = null;
-        NumeroComplesso expResult = null;
-        NumeroComplesso result = Calcolatore.substract(n1, n2);
-        assertEquals(expResult, result);
+        assertEquals(new NumeroComplesso(3, -5), Calcolatore.substract(opp1, opp2));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(11, -2), Calcolatore.substract(opp1, oppReal));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(1, 8), Calcolatore.substract(opp1, oppComplex));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(1,-2), Calcolatore.substract(opp1, oppZero));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(-10, 10), Calcolatore.substract(oppReal, oppComplex));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -72,11 +99,19 @@ public class CalcolatoreTest {
     @Test
     public void testMultiply() {
         System.out.println("multiply");
-        NumeroComplesso n1 = null;
-        NumeroComplesso n2 = null;
-        NumeroComplesso expResult = null;
-        NumeroComplesso result = Calcolatore.multiply(n1, n2);
-        assertEquals(expResult, result);
+        assertEquals(new NumeroComplesso(4, 7), Calcolatore.multiply(opp1, opp2));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(9, 2), Calcolatore.multiply(opp1, oppReal));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(-1, 12), Calcolatore.multiply(opp1, oppComplex));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(opp1, Calcolatore.multiply(opp1, oppZero));
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+        assertEquals(new NumeroComplesso(10, 10), Calcolatore.multiply(oppReal, oppComplex));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

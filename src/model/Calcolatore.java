@@ -22,7 +22,7 @@ public class Calcolatore {
     
     public static NumeroComplesso substract(NumeroComplesso n1, NumeroComplesso n2){
         
-        double parte_real = n2.getRealPart() - n2.getRealPart();
+        double parte_real = n2.getRealPart() - n1.getRealPart();
         double parte_imaginary = n2.getComplexPart() - n1.getComplexPart();
         NumeroComplesso result = new NumeroComplesso(parte_real, parte_imaginary);
         return(result);
