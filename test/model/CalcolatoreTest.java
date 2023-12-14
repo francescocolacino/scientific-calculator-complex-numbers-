@@ -16,11 +16,15 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author jaimecrz3
  */
 public class CalcolatoreTest {
-    
+    //Test complex number "complete"
     NumeroComplesso opp1;
+    //Test complex number "complete"
     NumeroComplesso opp2;
+    //Test complex number just with real part
     NumeroComplesso oppReal;
+    //Test complex number with just complex part
     NumeroComplesso oppComplex;
+    //Testz zero complex number
     NumeroComplesso oppZero;
     
     public CalcolatoreTest() {
@@ -53,12 +57,14 @@ public class CalcolatoreTest {
     @Test
     public void testAdd() {
         System.out.println("add");
+        //Test with two "complete" NumeroComplesso
         assertEquals(new NumeroComplesso(1, -1), Calcolatore.add(opp1, opp2));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
         assertEquals(new NumeroComplesso(9, 2), Calcolatore.add(opp1, oppReal));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
+        //Test with one "complete" NumeroComplesso and one with just complex part
         assertEquals(new NumeroComplesso(-1, 12), Calcolatore.add(opp1, oppComplex));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
