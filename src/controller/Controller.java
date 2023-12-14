@@ -13,6 +13,14 @@ import model.Calcolatore;
 /**
  *
  * @author gabriel
+ * 
+ * This class put every part of the program together: 
+ *  Calcolatore, variables, stack and Interface
+ * 
+ * It is responsible to:
+ *  - Handle input
+ *  - Handle errors
+ *  - Process every operation and delegate to the correct class
  */
 public class Controller {
     
@@ -20,6 +28,10 @@ public class Controller {
     public CalcStack<NumeroComplesso> stack;
     public MainView mw;
     
+    /**
+     * Constructor of Controller
+     * Initialize the interface, the stack and variables
+     */
     public Controller(){
         mw = new MainView();
         mw.setController(this);
@@ -30,96 +42,122 @@ public class Controller {
         }
     }
     
+    /**
+     * This method checks if a string is a complex number (NumeroComplesso).
+     * The format of a complex number is a+bj, a b integer numbers.
+     * If it is, inserts the number into stack.
+     * 
+     * @param input The string to be checked
+     * @return True if the input is a complex number, false if not.
+     */
     private boolean isNumeric(String input){
         
-        boolean es_num = false;
+        boolean is_num = false;
         
+        //Checks if the input is empty and if the first character is correct
         if(input!=null && !input.isEmpty() && 
                 ((input.charAt(0)>='0'&&input.charAt(0)<='9')
-                ||((input.charAt(0)=='+'||input.charAt(0)=='-')&&input.length()>1))){
+                ||((input.charAt(0)=='+'||
+                input.charAt(0)=='-')&&input.length()>1))){
             
-            int contador=0;
-            es_num=true;
-            String parte_real = "";
-            String parte_imaginary = "";
+            int counter=0;
+            is_num=true;
+            String real_part = "";
+            String complex_part = "";
             
+            
+            //Checks if the first character is a sign operator
             if(input.charAt(0)=='+' || input.charAt(0)=='-'){
-                parte_real += input.charAt(0);
-                contador++;
+                real_part += input.charAt(0);
+                counter++;
             }
             
-            if(input.charAt(contador)<'0'|| input.charAt(contador)>'9'){
-                es_num = false;
-            }
+            /*            
+            if(input.charAt(counter)<'0'|| input.charAt(counter)>'9'){
+            is_num = false;
+            }*/
             
-            for(; input.charAt(contador)>='0'&&input.charAt(contador)<='9' && contador <input.length()-1;contador++){
-                parte_real += input.charAt(contador);
-            }
             
-            if(input.charAt(contador)>='0'&&input.charAt(contador)<='9'){
-                parte_real += input.charAt(contador);
-                contador++;
-            }
-            
-            if(contador < input.length()){
-                if(input.charAt(contador)=='j'){
+            //Checks if the first part of the number is numeric
+            for(; input.charAt(counter)>='0'&&
+                    input.charAt(counter)<='9' && 
+                    counter <input.length()-1;counter++){
                 
-                    parte_imaginary = parte_real;
-                    parte_real = "0";
-                    ++contador;
-
+                real_part += input.charAt(counter);
+            }
+            if(input.charAt(counter)>='0'&&input.charAt(counter)<='9'){
+                real_part += input.charAt(counter);
+                counter++;
+            }
+            
+            //checks if the number is a pure complex number (just complex part)
+            if(counter < input.length()){
+                if(input.charAt(counter)=='j'){
+                    complex_part = real_part;
+                    real_part = "0";
+                    ++counter;
                 }
             }
             
-            if(contador<input.length() && es_num){
-                if(((input.charAt(contador)=='+'||input.charAt(contador)=='-')
-                    &&!parte_real.isEmpty()) || (!parte_real.isEmpty())){
+            //Checks the second part
+            if(counter<input.length() && is_num){
                 
-                    if(input.charAt(contador)=='+' || input.charAt(contador)=='-'){
-
-                        parte_imaginary += input.charAt(contador);
-                        contador++;
-
+                if(((input.charAt(counter)=='+'||
+                        input.charAt(counter)=='-')
+                    &&!real_part.isEmpty()) || (!real_part.isEmpty())){
+                
+                    //checks if the second part start with a sign operator
+                    if(input.charAt(counter)=='+' || 
+                            input.charAt(counter)=='-'){
+                        complex_part += input.charAt(counter);
+                        counter++;
                     }
                     
-                    if(contador<input.length()){
-                        if(input.charAt(contador)>='0'&&input.charAt(contador)<='9'){
+                    if(counter<input.length()){
+                        if(input.charAt(counter)>='0'&&
+                                input.charAt(counter)<='9'){
 
-                            for(; input.charAt(contador)>='0'&&input.charAt(contador)<='9'&&contador<input.length()-1;contador++){
-                                parte_imaginary += input.charAt(contador);
+                            //Checks if the second part is numeric
+                            for(; input.charAt(counter)>='0'&&
+                                    input.charAt(counter)<='9'&&
+                                    counter<input.length()-1;counter++){
+                                
+                                complex_part += input.charAt(counter);
                             }
-                            
-                            if(input.charAt(contador)>='0'&&input.charAt(contador)<='9'){
-                                parte_imaginary += input.charAt(contador);
-                                ++contador;
+                            if(input.charAt(counter)>='0'&&
+                                    input.charAt(counter)<='9'){
+                                complex_part += input.charAt(counter);
+                                ++counter;
                             }
 
-                            if(contador!=input.length()-1||input.charAt(contador)!='j'){
-
-                                es_num = false;
-
+                            //checks if the second part has the "j" 
+                            //to indicate it is a complex number
+                            if(counter!=input.length()-1||
+                                    input.charAt(counter)!='j'){
+                                is_num = false;
                             }
 
                         } else{
 
-                            es_num = false;
+                            is_num = false;
 
                         }
                     }
                     
                 } else{
 
-                    es_num = false;
+                    is_num = false;
 
                 }
             }
             
-            
-            if(es_num){
-                if(parte_imaginary.isEmpty()){
-                    stack.add(new NumeroComplesso(Double.parseDouble(parte_real)));
+            //If the input is a complex number, insert it in the stack
+            if(is_num){
+                if(complex_part.isEmpty()){
+                    stack.add(new NumeroComplesso(Double.parseDouble(real_part)));
                 }else{
-                    stack.add(new NumeroComplesso(Double.parseDouble(parte_real), Double.parseDouble(parte_imaginary)));
+                    stack.add(new NumeroComplesso(Double.parseDouble(real_part), 
+                            Double.parseDouble(complex_part)));
                 }
                 
                 mw.addToStack(stack.lastElement().toString());
@@ -129,14 +167,29 @@ public class Controller {
              
         }
         
-        return(es_num);
+        return(is_num);
         
     }
     
+    /**
+     * Checks if the input is a complex number operation.
+     * The operations are:
+     *  - Addition          +
+     *  - Subtraction       -
+     *  - Multiplication    *
+     *  - Division          /
+     *  - Square root       sqrt
+     *  - Invert sign       +-
+     * If the input is an operation, it process it.
+     * 
+     * @param input String to be checked.
+     * @return True if the input is operation, false if not.
+     */
     private boolean isCalculatorOpValid(String input){
         
         boolean es_op = false;
         
+        //Switch to check if its a operation
         if(input!=null && !input.isEmpty()){
             switch(input){
                 case "+":
@@ -144,7 +197,7 @@ public class Controller {
                     es_op=true;
                     break;
                 case "-":
-                    substractStack();
+                    subtractStack();
                     es_op=true;
                     break;
                 case "*":
@@ -172,10 +225,27 @@ public class Controller {
         
     }
     
+    /**
+     * This method checks if the input is a stack operator.
+     * The valid operators for stack is:
+     *  - clear
+     *  - drop
+     *  - dup
+     *  - swap
+     *  - over
+     * If the input is an operation, it process it.
+     * 
+     * It is responsible to send a error message to 
+     * the interface if the operations are invalid
+     * 
+     * @param input String to be checked.
+     * @return True if the input is operation, false if not.
+     */
     private boolean isStackOpValid(String input){
         
         boolean es_op = false;
         
+        //Switch to check if its a operation
         if(input!=null && !input.isEmpty()){
             switch(input){
                 case "clear":
@@ -222,10 +292,23 @@ public class Controller {
         
     }
     
+    /**
+     * This method checks if the input is a variable operation.
+     * the variable operations are:
+     *  - Stack to var 
+     *  - Var to stack 
+     *  - Add to var 
+     *  - Subtract to var
+     * If the input is an operation, it process it.
+     * 
+     * @param input String to be checked.
+     * @return True if the input is operation, false if not.
+     */
     private boolean isVarOpValid(String input){
         
         boolean es_op = false;
-        
+
+        //Check if its a operation
         if(input!=null && !input.isEmpty() && input.length()==2){
             if(input.charAt(0)=='>' && input.charAt(1)>='a' && input.charAt(0)<='z'){
                 
@@ -256,19 +339,29 @@ public class Controller {
         
     }
     
+    /**
+     * Private method to get the value of a var given the index.
+     * 
+     * @param var Index of the variable. 
+     * @return The value of the variable if the index is correct.
+     */
     private NumeroComplesso getVar(int var){
         
         return(variables.get(var));
         
     }
     
+    /**
+     * Private method to set the value of a var given the index.
+     * It is responsible to update the interface
+     * @param var   The index of the variable to be changed.
+     * @param n     The new value of the variable.
+     */
     private void setVar(int var, NumeroComplesso n){
-        
         variables.set(var, n);
         mw.setVar(var, n.toString());
         mw.removeFromStack();            
         mw.updateView();
-        
     }
     
     
@@ -362,7 +455,7 @@ public class Controller {
         
     }
     
-    public void substractStack(){
+    public void subtractStack(){
         
         if(!stack.isEmpty()){
             

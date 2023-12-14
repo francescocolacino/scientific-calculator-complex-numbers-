@@ -192,17 +192,17 @@ public class ControllerTest {
         
         int size = instance.stack.size();
         
-        instance.substractStack();
+        instance.subtractStack();
         assertEquals(new NumeroComplesso(0,-10), instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
-        instance.substractStack();
+        instance.subtractStack();
         assertEquals(new NumeroComplesso(-10,-10), instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
-        instance.substractStack();
+        instance.subtractStack();
         assertEquals(new NumeroComplesso(-9,-12), instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
         
-        instance.substractStack();
+        instance.subtractStack();
         assertEquals(new NumeroComplesso(-9,-12), instance.stack.lastElement());
         assertEquals(size,instance.stack.size());
     }
