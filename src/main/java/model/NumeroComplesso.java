@@ -162,10 +162,16 @@ public class NumeroComplesso {
         NumeroComplesso c = (NumeroComplesso) o;
          
         // Compare the data members and return accordingly 
-        return Double.compare(this.getRealPart(), 
-                c.getRealPart()) == 0
-                && Double.compare(this.getComplexPart(), 
-                        c.getComplexPart()) == 0;
+        return (this.getRealPart()==c.getRealPart())
+                && (this.getComplexPart()==c.getComplexPart());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.realPart) ^ (Double.doubleToLongBits(this.realPart) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.imaginaryPart) ^ (Double.doubleToLongBits(this.imaginaryPart) >>> 32));
+        return hash;
     }
     
 }

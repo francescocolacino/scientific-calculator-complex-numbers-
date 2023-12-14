@@ -173,9 +173,6 @@ public class Controller {
                 if(complex_part.isEmpty()){
                     stack.add(new NumeroComplesso(Double.parseDouble(real_part)));
                 }else{
-                    System.out.print ("\n");
-                    System.out.print (real_part);
-                    System.out.print (complex_part);
                     stack.add(new NumeroComplesso(Double.parseDouble(real_part), 
                             Double.parseDouble(complex_part)));
                 }

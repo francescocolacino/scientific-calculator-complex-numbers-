@@ -58,7 +58,7 @@ import static org.junit.jupiter.api.Assertions.*;
     // Testa il metodo toString per verificare che restituisca correttamente la rappresentazione in stringa del numero complesso.
      @Test
     public void testToString() {
-         assertEquals("3.0+4.0j", numeroComplesso.toString());
+         assertEquals("3+4j", numeroComplesso.toString());
      }
  
 

@@ -35,9 +35,13 @@ public class ControllerTest {
         oppZero = new NumeroComplesso(0);
         
         instance.stack.add(opp1);
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(oppReal);
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(oppComplex);
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(oppZero);
+        instance.mw.addToStack(instance.stack.lastElement().toString());
     }
 
     /**
@@ -147,6 +151,7 @@ public class ControllerTest {
         
         //Test if there is no value at stack
         instance.stack.clear();
+        instance.mw.cleanStack();
         instance.stackToVar(0);
         
         assertEquals(n,instance.variables.get(0));
@@ -214,10 +219,15 @@ public class ControllerTest {
         
         //add new sample numbers
         instance.stack.add(new NumeroComplesso(1,1)) ;
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(new NumeroComplesso(2,1));
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(new NumeroComplesso(-1,4));
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(new NumeroComplesso(8,5));
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(new NumeroComplesso(0.4,3.2));
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         
         int size = instance.stack.size();
 
@@ -255,7 +265,9 @@ public class ControllerTest {
         
         //Test multiplication with no numbers in stack
         instance.stack.clear();
+        instance.mw.cleanStack();
         instance.stack.add(aux);
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.multiplyStack();
         assertEquals(aux,instance.stack.lastElement());
         assertEquals(1,instance.stack.size());
@@ -270,13 +282,18 @@ public class ControllerTest {
 
         //add new sample numbers
         instance.stack.add(new NumeroComplesso(1,1)) ;
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(new NumeroComplesso(2,1));
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(new NumeroComplesso(-1,4));
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(new NumeroComplesso(8,5));
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.stack.add(new NumeroComplesso(0.4,3.2));
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         
         int size = instance.stack.size();
-
+        System.out.print("TAM: " + size);
         //Test some divisions
         instance.divideStack();
         NumeroComplesso aux = Calcolatore.divide(
@@ -310,7 +327,9 @@ public class ControllerTest {
         
         //Test with no numbers in stack
         instance.stack.clear();
+        instance.mw.cleanStack();
         instance.stack.add(aux);
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         instance.divideStack();
         assertEquals(aux,instance.stack.lastElement());
         assertEquals(1,instance.stack.size());
@@ -324,6 +343,7 @@ public class ControllerTest {
         System.out.println("sqrtStack");
        
         instance.stack.add(new NumeroComplesso(21,-31)) ;
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         
         int size = instance.stack.size();
         
@@ -343,6 +363,7 @@ public class ControllerTest {
 
         //Test of square root of zero
         instance.stack.add(new NumeroComplesso(0,0));
+        instance.mw.addToStack(instance.stack.lastElement().toString());
 
         n = Calcolatore.sqrt(instance.stack.lastElement());
         instance.sqrtStack();
@@ -351,6 +372,7 @@ public class ControllerTest {
         
         //Test of square root with no numbers in stack
         instance.stack.clear();
+        instance.mw.cleanStack();
 
         instance.sqrtStack();
         assertEquals(0,instance.stack.size());
@@ -365,6 +387,7 @@ public class ControllerTest {
         System.out.println("invertSign");
         
         instance.stack.add(new NumeroComplesso(21,-31)) ;
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         
         int size = instance.stack.size();
         
@@ -375,6 +398,7 @@ public class ControllerTest {
         assertEquals(size,instance.stack.size());
         
         instance.stack.add(new NumeroComplesso(0,0)) ;
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         
         size = instance.stack.size();
         
@@ -385,6 +409,7 @@ public class ControllerTest {
         assertEquals(size,instance.stack.size());
         
         instance.stack.clear();
+        instance.mw.cleanStack();
 
         //Test with no number at stack
         instance.invertSign();
@@ -494,6 +519,7 @@ public class ControllerTest {
         numAux = new NumeroComplesso(7);
         
         instance.stack.add(numAux);
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         
         //Test clear and clear with no number in stack
         aux = "clear";
@@ -508,6 +534,7 @@ public class ControllerTest {
         instance.inputHandler(aux);
         assertEquals(0,instance.stack.size());
         instance.stack.add(numAux);
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         aux = "dup";
         instance.inputHandler(aux);
         assertEquals(2,instance.stack.size());
@@ -516,6 +543,7 @@ public class ControllerTest {
         //Test swap
         numAux = new NumeroComplesso(9);
         instance.stack.add(numAux);
+        instance.mw.addToStack(instance.stack.lastElement().toString());
         aux = "swap";
         instance.inputHandler(aux);
         assertEquals(3,instance.stack.size());

@@ -24,7 +24,6 @@ public class MainView extends javax.swing.JFrame {
         initComponents();
         appName="Calcolatore";
         this.setTitle(appName);
-        showView();
         
         inputView1.mw = this;
         
