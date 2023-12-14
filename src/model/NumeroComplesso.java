@@ -123,14 +123,14 @@ public class NumeroComplesso {
             }else{
                 angle = (3*Math.PI)/2;
             }
-        }else if(realPart>0&&imaginaryPart>0){
+        }else if(realPart>0&&imaginaryPart>=0){
             angle=Math.atan(imaginaryPart/realPart);
-        }else if(realPart<0&&imaginaryPart>0){
+        }else if(realPart<0&&imaginaryPart>=0){
             angle=Math.PI - Math.atan(imaginaryPart/Math.abs(realPart));
-        }else if(realPart<0&&imaginaryPart<0){
+        }else if(realPart<0&&imaginaryPart<=0){
             angle=Math.PI + Math.atan(Math.abs(imaginaryPart)/Math.abs(realPart));
         }else{
-            angle=2*Math.PI + Math.atan(Math.abs(imaginaryPart)/realPart);
+            angle=2*Math.PI - Math.atan(Math.abs(imaginaryPart)/realPart);
         }
         
         return(angle);   

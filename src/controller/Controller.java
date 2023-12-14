@@ -62,6 +62,8 @@ public class Controller {
             
             int counter=0;
             is_num=true;
+            //For avoid something like this: 4j+7j
+            boolean only_complex_part=false;
             String real_part = "";
             String complex_part = "";
             
@@ -77,13 +79,18 @@ public class Controller {
             is_num = false;
             }*/
             
-            
+            boolean comma = false;
             //Checks if the first part of the number is numeric
-            for(; input.charAt(counter)>='0'&&
-                    input.charAt(counter)<='9' && 
+            for(; ((input.charAt(counter)>='0'&&
+                    input.charAt(counter)<='9')||
+                    (input.charAt(counter)=='.'&&!comma))&& 
                     counter <input.length()-1;counter++){
                 
                 real_part += input.charAt(counter);
+                //Checks if the input has a double as the real part
+                if(input.charAt(counter)==','){
+                    comma = true;
+                }
             }
             if(input.charAt(counter)>='0'&&input.charAt(counter)<='9'){
                 real_part += input.charAt(counter);
@@ -96,15 +103,16 @@ public class Controller {
                     complex_part = real_part;
                     real_part = "0";
                     ++counter;
+                    only_complex_part=true;
                 }
             }
             
             //Checks the second part
-            if(counter<input.length() && is_num){
+            if(counter<input.length()){
                 
                 if(((input.charAt(counter)=='+'||
                         input.charAt(counter)=='-')
-                    &&!real_part.isEmpty()) || (!real_part.isEmpty())){
+                    &&!real_part.isEmpty())){
                 
                     //checks if the second part start with a sign operator
                     if(input.charAt(counter)=='+' || 
@@ -117,12 +125,19 @@ public class Controller {
                         if(input.charAt(counter)>='0'&&
                                 input.charAt(counter)<='9'){
 
+                            comma = false;
                             //Checks if the second part is numeric
-                            for(; input.charAt(counter)>='0'&&
-                                    input.charAt(counter)<='9'&&
+                            for(; ((input.charAt(counter)>='0'&&
+                                    input.charAt(counter)<='9')||
+                                    (input.charAt(counter)=='.'&&!comma))&&
                                     counter<input.length()-1;counter++){
                                 
                                 complex_part += input.charAt(counter);
+                                //Checks if the input has a double as the complex part
+                                if(input.charAt(counter)==','){
+                                    comma = true;
+                                }
+                                
                             }
                             if(input.charAt(counter)>='0'&&
                                     input.charAt(counter)<='9'){
@@ -133,7 +148,7 @@ public class Controller {
                             //checks if the second part has the "j" 
                             //to indicate it is a complex number
                             if(counter!=input.length()-1||
-                                    input.charAt(counter)!='j'){
+                                    input.charAt(counter)!='j'||only_complex_part){
                                 is_num = false;
                             }
 
@@ -142,6 +157,8 @@ public class Controller {
                             is_num = false;
 
                         }
+                    } else{
+                        is_num = false;
                     }
                     
                 } else{
@@ -156,6 +173,9 @@ public class Controller {
                 if(complex_part.isEmpty()){
                     stack.add(new NumeroComplesso(Double.parseDouble(real_part)));
                 }else{
+                    System.out.print ("\n");
+                    System.out.print (real_part);
+                    System.out.print (complex_part);
                     stack.add(new NumeroComplesso(Double.parseDouble(real_part), 
                             Double.parseDouble(complex_part)));
                 }
@@ -514,18 +534,15 @@ public class Controller {
             
             NumeroComplesso n1 = stack.drop();
             
-            if(!stack.isEmpty()){
+            if(n1.getRealPart() == 0 && n1.getComplexPart() == 0){
+                mw.CantDivideByZeroMessage();
+                stack.add(n1);
+            }else if(!stack.isEmpty()){
                 NumeroComplesso n2 = stack.drop();
-                if(n2.getRealPart() == 0 && n2.getComplexPart() == 0){
-                    mw.CantDivideByZeroMessage();
-                    stack.add(n2);
-                    stack.add(n1);
-                }else{
-                    NumeroComplesso n3 = Calcolatore.divide(n1,n2);
-                    stack.add(n3);
-                    mw.processBinaryOp(stack.lastElement().toString());
-                }
                 
+                NumeroComplesso n3 = Calcolatore.divide(n2,n1);
+                stack.add(n3);
+                mw.processBinaryOp(stack.lastElement().toString());
             }else{
                 
                 stack.add(n1);
