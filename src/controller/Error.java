@@ -4,9 +4,6 @@
  */
 package controller;
 
-/**
- *
- * @author gabriel
- */
+
 public enum Error { INPUTERROR, NOVALUEINSTACKTOOPERATE, NOVALUEINVARTOOPERATE, 
                         CANTDIVIDEBYZERO}

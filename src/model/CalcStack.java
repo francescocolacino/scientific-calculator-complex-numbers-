@@ -7,16 +7,25 @@ package model;
 import java.util.Stack;
 
 /**
- *
- * @author gabriel
+ * This class implements a few methods to the stack 
+ * that modifies the last elements of itself.
+ * 
+ * @param <T> 
  */
 public class CalcStack<T> extends Stack<T>{
     
-    
+    /**
+     * This method eliminates the last element of the stack.
+     * @return The element eliminated.
+     */
     public T drop(){
         return this.pop();
     }
     
+    /**
+     * This method duplicates the last element of the stack.
+     * @return True if the stack isn't empty.
+     */
     public boolean dup(){
         boolean canDup = false;
         if(!this.isEmpty()){
@@ -27,6 +36,10 @@ public class CalcStack<T> extends Stack<T>{
         return canDup;
     }
     
+    /**
+     * This method swaps the last two elements of the stack.
+     * @return True if there is at least two elements.
+     */
     public boolean swap(){
         boolean canSwap = false;
         
@@ -42,6 +55,10 @@ public class CalcStack<T> extends Stack<T>{
         return canSwap;
     }
     
+    /**
+     * This method duplicates the second last element in the stack.
+     * @return True if there is at least two elements in the stack.
+     */
     public boolean over(){
         boolean canOver = false;
         

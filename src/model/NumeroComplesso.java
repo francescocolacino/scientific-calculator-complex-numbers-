@@ -7,47 +7,66 @@ package model;
 import java.text.DecimalFormat;
 
 /**
- *
- * @author gabriel
+ * This class represents a complex number. 
+ * Handles creation, getters and toString.
+ * 
  */
 public class NumeroComplesso {
     
     private double realPart;
     private double imaginaryPart;
     
+    /**
+     * Constructor that takes a real number (double).
+     * "Converts" a double to its value as a complex number.
+     * 
+     * @param real Real part of the number.
+     */
     public NumeroComplesso(double real){
-        
         realPart = real;
         imaginaryPart = 0;
-        
     }
             
+    /**
+     * Constructor that takes real and complex part of the number.
+     * 
+     * @param real Real part of the number.
+     * @param imaginary Complex part of the number.
+     */
     public NumeroComplesso(double real,double imaginary){
-        
         realPart = real;
         imaginaryPart = imaginary;
-        
     }
     
+    /**
+     * Copy constructor.
+     * @param n Complex number to copy.
+     */
     public NumeroComplesso(NumeroComplesso n){
-        
         realPart = n.realPart;
         imaginaryPart = n.imaginaryPart;
-        
     }
     
+    /**
+     * Getter of real part.
+     * @return 
+     */
     public double getRealPart(){
-        
         return(realPart);
-        
     }
     
+    /**
+     * Getter of complex part.
+     * @return 
+     */
     public double getComplexPart(){
-        
         return(imaginaryPart);
-        
     }
     
+    /**
+     * Override of toString method.
+     * @return Complex number in the format (a+bj)
+     */
     @Override
     public String toString(){
         
@@ -56,12 +75,13 @@ public class NumeroComplesso {
         String imaginarypart = "";
         DecimalFormat numberFormat = new DecimalFormat("#.###");
 
-        
+        //Checks if complex part is negative
         if((int)(imaginaryPart*1000) < 0){
             sign = "-";
         }else if((int)(imaginaryPart*1000) == 0)
             sign = "";
         
+        //Checks if there is real part
         if((int)(realPart*1000) != 0){
             realpart = numberFormat.format(realPart);
         }
@@ -70,7 +90,6 @@ public class NumeroComplesso {
         }
         
         if((int)(imaginaryPart*1000) != 0){
-            System.out.print("imaginari part: " + imaginaryPart);
             imaginarypart = numberFormat.format(Math.abs(imaginaryPart)) + "j";
         }
         
@@ -78,12 +97,20 @@ public class NumeroComplesso {
         
     }
     
-    public double getModule(){
-        
-        return(Math.sqrt((realPart*realPart)+(imaginaryPart*imaginaryPart)));
-        
+    /**
+     * Calculates the module of the number.
+     * 
+     * @return Returns the module.
+     */
+    public double getModule(){    
+        return(Math.sqrt((realPart*realPart)+(imaginaryPart*imaginaryPart)));    
     }
     
+    /**
+     * Calculate the angle of the number.
+     * 
+     * @return 
+     */
     public double getAngle(){
         
         double angle;
@@ -110,6 +137,13 @@ public class NumeroComplesso {
     }
     
     
+    /**
+     * Override of equal method.
+     * Useful to compare complex numbers.
+     * 
+     * @param o Object to be compared
+     * @return True if numbers are equal.
+     */
     @Override
     public boolean equals(Object o) {
  
