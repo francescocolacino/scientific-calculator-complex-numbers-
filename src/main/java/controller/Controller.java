@@ -344,7 +344,7 @@ public class Controller {
                 
             }else if(input.charAt(0)=='-' && input.charAt(1)>='a' && input.charAt(0)<='z'){
                 
-                substractVar(input.charAt(1)-'a');
+                subtractVar(input.charAt(1)-'a');
                 es_op = true;
                 
             }
@@ -383,13 +383,13 @@ public class Controller {
     
     
     
-    public void substractVar(int var){
+    public void subtractVar(int var){
         
         if(variables.get(var)!=null&&!stack.isEmpty()){
             NumeroComplesso n1 = variables.get(var);
             NumeroComplesso n2 = stack.drop();
             
-            NumeroComplesso n = Calcolatore.substract(n1,n2);
+            NumeroComplesso n = Calcolatore.substract(n2,n1);
             this.setVar(var, n);
             
         }else if(stack.isEmpty()){

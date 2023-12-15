@@ -52,28 +52,28 @@ public class ControllerTest {
         System.out.println("substractVar");
         
         //Test if there is no value in var
-        instance.substractVar(0);
+        instance.subtractVar(0);
         assertEquals(oppZero, instance.stack.lastElement());
         assertEquals(4,instance.stack.size());
         assertEquals(null,instance.variables.get(0));
         
         //Different substractions
         instance.variables.set(0, oppZero);
-        instance.substractVar(0);
+        instance.subtractVar(0);
         assertEquals(oppZero, instance.variables.get(0));
         assertEquals(3,instance.stack.size());
-        instance.substractVar(0);
+        instance.subtractVar(0);
         assertEquals(new NumeroComplesso(0,-10), instance.variables.get(0));
         assertEquals(2,instance.stack.size());
-        instance.substractVar(0);
+        instance.subtractVar(0);
         assertEquals(new NumeroComplesso(-10,-10), instance.variables.get(0));
         assertEquals(1,instance.stack.size());
-        instance.substractVar(0);
+        instance.subtractVar(0);
         assertEquals(new NumeroComplesso(-9,-12), instance.variables.get(0));
         assertEquals(0,instance.stack.size());
         
         //Test if there is no value in stack
-        instance.substractVar(0);
+        instance.subtractVar(0);
         assertEquals(new NumeroComplesso(-9,-12), instance.variables.get(0));
         assertEquals(0,instance.stack.size());        
     }
@@ -155,7 +155,7 @@ public class ControllerTest {
         instance.stackToVar(0);
         
         assertEquals(n,instance.variables.get(0));
-        assertEquals(stackSize-1,instance.stack.size());
+        assertEquals(0,instance.stack.size());
     }
 
     /**
@@ -195,18 +195,18 @@ public class ControllerTest {
         
         //Test of the method
         instance.subtractStack();
-        assertEquals(new NumeroComplesso(0,-10), instance.stack.lastElement());
+        assertEquals(new NumeroComplesso(0,10), instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
         instance.subtractStack();
-        assertEquals(new NumeroComplesso(-10,-10), instance.stack.lastElement());
+        assertEquals(new NumeroComplesso(10,-10), instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
         instance.subtractStack();
-        assertEquals(new NumeroComplesso(-9,-12), instance.stack.lastElement());
+        assertEquals(new NumeroComplesso(-11,12), instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
         
         //Test if there arent enough numbers in stack
         instance.subtractStack();
-        assertEquals(new NumeroComplesso(-9,-12), instance.stack.lastElement());
+        assertEquals(new NumeroComplesso(-11,12), instance.stack.lastElement());
         assertEquals(size,instance.stack.size());
     }
 
@@ -364,7 +364,7 @@ public class ControllerTest {
         //Test of square root of zero
         instance.stack.add(new NumeroComplesso(0,0));
         instance.mw.addToStack(instance.stack.lastElement().toString());
-
+        size++;
         n = Calcolatore.sqrt(instance.stack.lastElement());
         instance.sqrtStack();
         assertEquals(n,instance.stack.lastElement());
@@ -430,12 +430,12 @@ public class ControllerTest {
         assertEquals(4,instance.stack.size());
 
         //Test correct number input
-        aux = "-8";
+        aux = "8";
         instance.inputHandler(aux);
         assertEquals(new NumeroComplesso(8),instance.stack.lastElement());
         assertEquals(5,instance.stack.size());
         
-        aux = "-8j";
+        aux = "8j";
         instance.inputHandler(aux);
         assertEquals(new NumeroComplesso(0,8),instance.stack.lastElement());
         assertEquals(6,instance.stack.size());
@@ -445,7 +445,7 @@ public class ControllerTest {
         assertEquals(new NumeroComplesso(1,8),instance.stack.lastElement());
         assertEquals(7,instance.stack.size());
         
-        aux = "1.2+8.5j";
+        aux = "1,2+8,5j";
         instance.inputHandler(aux);
         assertEquals(new NumeroComplesso(1,8),instance.stack.lastElement());
         assertEquals(7,instance.stack.size());
