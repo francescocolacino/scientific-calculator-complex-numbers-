@@ -322,8 +322,8 @@ public class ControllerTest {
         
         //Test division by 0
         instance.divideStack();
-        assertEquals(0, instance.stack.lastElement());
-        assertEquals(size,instance.stack.size());
+        assertEquals(new NumeroComplesso(0), instance.stack.lastElement());
+        assertEquals(--size,instance.stack.size());
         
         //Test with no numbers in stack
         instance.stack.clear();
