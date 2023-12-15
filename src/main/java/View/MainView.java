@@ -50,7 +50,6 @@ public class MainView extends javax.swing.JFrame {
     }
     
     public void recibeInput(String s){
-        System.out.print(s);
         controller.inputHandler(s);
         this.updateView();
     }

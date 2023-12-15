@@ -510,7 +510,6 @@ public class Controller {
                 
                 NumeroComplesso n2 = stack.drop();
                 stack.add(Calcolatore.multiply(n1,n2));
-                System.out.print("Mult: " + stack.lastElement().toString());
                 mw.processBinaryOp(stack.lastElement().toString());
                 
             }else{

@@ -293,7 +293,6 @@ public class ControllerTest {
         instance.mw.addToStack(instance.stack.lastElement().toString());
         
         int size = instance.stack.size();
-        System.out.print("TAM: " + size);
         //Test some divisions
         instance.divideStack();
         NumeroComplesso aux = Calcolatore.divide(
