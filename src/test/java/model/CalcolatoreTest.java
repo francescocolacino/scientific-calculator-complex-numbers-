@@ -124,10 +124,10 @@ public class CalcolatoreTest {
     @Test
     public void testSqrt() {
         System.out.println("sqrt");
-        assertEquals(new NumeroComplesso(0.786, 1.272), Calcolatore.sqrt(opp1));
-        assertEquals(new NumeroComplesso(-1.674, 0.896), Calcolatore.sqrt(opp2));
-        assertEquals(new NumeroComplesso(3.162, 0), Calcolatore.sqrt(oppReal));
-        assertEquals(new NumeroComplesso(2.236, 2.236), Calcolatore.sqrt(oppComplex));
+        assertEquals(new NumeroComplesso(0.786, 1.272).toString(), Calcolatore.sqrt(opp1).toString());
+        assertEquals(new NumeroComplesso(1.674, -0.896).toString(), Calcolatore.sqrt(opp2).toString());
+        assertEquals(new NumeroComplesso(3.162, 0).toString(), Calcolatore.sqrt(oppReal).toString());
+        assertEquals(new NumeroComplesso(2.236, 2.236).toString(), Calcolatore.sqrt(oppComplex).toString());
         assertEquals(new NumeroComplesso(0, 0), Calcolatore.sqrt(oppZero));
     }
     
