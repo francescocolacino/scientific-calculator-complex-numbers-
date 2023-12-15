@@ -72,8 +72,8 @@ public class Calcolatore {
         double denominador = n2.getRealPart()*n2.getRealPart() + 
                              n2.getComplexPart()*n2.getComplexPart();
         
-        double parte_real = (n2.getRealPart()*n1.getComplexPart() + 
-                             n2.getComplexPart()*n1.getRealPart())/denominador;
+        double parte_real = (n2.getRealPart()*n1.getRealPart() + 
+                             n2.getComplexPart()*n1.getComplexPart())/denominador;
         
         double parte_imaginary = (n1.getComplexPart()*n2.getRealPart() - 
                              n1.getRealPart()*n2.getComplexPart())/denominador;

@@ -98,9 +98,9 @@ public class CalcolatoreTest {
     @Test
     public void testDivide() {
         System.out.println("divide");
-        assertEquals(new NumeroComplesso(-8/3, 1/13), Calcolatore.divide(opp1, opp2));
-        assertEquals(new NumeroComplesso(-1/10, 1/5), Calcolatore.divide(opp1, oppReal));
-        assertEquals(new NumeroComplesso(1/5, 1/10), Calcolatore.divide(opp1, oppComplex));
+        assertEquals(new NumeroComplesso(-0.615, 0.077).toString(), Calcolatore.divide(opp1, opp2).toString());
+        assertEquals(new NumeroComplesso(-0.1, 0.2), Calcolatore.divide(opp1, oppReal));
+        assertEquals(new NumeroComplesso(0.2, 0.1), Calcolatore.divide(opp1, oppComplex));
         assertEquals(oppZero, Calcolatore.divide(oppZero, opp1));
         assertEquals(new NumeroComplesso(0, -1), Calcolatore.divide(oppReal, oppComplex));
     }
