@@ -297,32 +297,32 @@ public class ControllerTest {
         //Test some divisions
         instance.divideStack();
         NumeroComplesso aux = Calcolatore.divide(
-                new NumeroComplesso(0.4,3.2), 
-                new NumeroComplesso(8,5));
+                new NumeroComplesso(8,5), 
+                new NumeroComplesso(0.4,3.2));
         assertEquals(aux, instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
         instance.divideStack();
         aux = Calcolatore.divide(
-                aux, 
-                new NumeroComplesso(-1,4));
+                new NumeroComplesso(-1,4),
+                aux);
         assertEquals(aux, instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
         instance.divideStack();
         aux = Calcolatore.divide(
-                aux, 
-                new NumeroComplesso(2,1));
+                new NumeroComplesso(2,1),
+                aux);
         assertEquals(aux, instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
         instance.divideStack();
         aux = Calcolatore.divide(
-                aux, 
-                new NumeroComplesso(1,1));
+                new NumeroComplesso(1,1),
+                aux);
         assertEquals(aux, instance.stack.lastElement());
         assertEquals(--size,instance.stack.size());
         
         //Test division by 0
         instance.divideStack();
-        assertEquals(aux, instance.stack.lastElement());
+        assertEquals(0, instance.stack.lastElement());
         assertEquals(size,instance.stack.size());
         
         //Test with no numbers in stack
