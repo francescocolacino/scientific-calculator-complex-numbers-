@@ -171,25 +171,40 @@ public class MainView extends javax.swing.JFrame {
 
     
     public boolean confirmExitMessage(){
-        
-        return (JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?", getAppName(), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
-        
+        return (JOptionPane.showConfirmDialog(this, 
+                "Are you sure you want to exit?", 
+                getAppName(), 
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
     }
     
     public void InputErrorMessage(){
-        JOptionPane.showMessageDialog(this, "The input is not correct. Please check the input", getAppName(), JOptionPane.ERROR_MESSAGE);
+        if(this.isVisible())
+        JOptionPane.showMessageDialog(this, 
+                "The input is not correct. Please check the input", 
+                getAppName(), 
+                JOptionPane.ERROR_MESSAGE);
     }
     
     public void NoValueInStackToOperateMessage(){
-        JOptionPane.showMessageDialog(this, "There is not enough values in the stack. Please introduce a value", getAppName(), JOptionPane.ERROR_MESSAGE);
+        if(this.isVisible())
+        JOptionPane.showMessageDialog(this, 
+                "There is not enough values in the stack. Please introduce a value", 
+                getAppName(), JOptionPane.ERROR_MESSAGE);
     }
     
     public void NoValueInVarToOperateMessage(){
-        JOptionPane.showMessageDialog(this, "There is not a value in the var selected. Please introduce a value", getAppName(), JOptionPane.ERROR_MESSAGE);
+        if(this.isVisible())
+        JOptionPane.showMessageDialog(this, 
+                "There is not a value in the var selected. Please introduce a value", 
+                getAppName(), 
+                JOptionPane.ERROR_MESSAGE);
     }
     
     public void CantDivideByZeroMessage(){
-        JOptionPane.showMessageDialog(this, "Is not possible to divide by zero. Please introduce a different value", getAppName(), JOptionPane.ERROR_MESSAGE);
+        if(this.isVisible())
+        JOptionPane.showMessageDialog(this, 
+                "Is not possible to divide by zero. Please introduce a different value", 
+                getAppName(), JOptionPane.ERROR_MESSAGE);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

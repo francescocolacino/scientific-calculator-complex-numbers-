@@ -61,8 +61,7 @@ import static org.junit.jupiter.api.Assertions.*;
          assertEquals("3+4j", numeroComplesso.toString());
      }
  
-
-    // Testa il metodo getModule per verificare che restituisca correttamente il modulo del numero complesso.
+    
      @Test
     public void testGetModule() {
          assertEquals(5.0, numeroComplesso.getModule());
