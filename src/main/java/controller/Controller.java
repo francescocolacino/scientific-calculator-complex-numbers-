@@ -273,7 +273,7 @@ public class Controller {
                 case "drop":
                     
                     es_op=true;
-                    if(stack.drop() != null)
+                    if(!stack.empty())
                         mw.drop();
                     else
                         mw.NoValueInStackToOperateMessage();
